@@ -14,12 +14,12 @@ const emailPassObj = require("./secrets");
         await newTab.type("input[id='input-2']",emailPassObj.password,{delay:50});
         await newTab.click('button[data-analytics="LoginPassword"]', { delay: 100 });
         
-        await waitAndClick(".track-card a[data-attr2='algorithms']", newTab);
+        await waitAndClick("[data-automation='algorithms']", newTab);
         await waitAndClick("input[value='warmup']", newTab);
         await newTab.waitFor(4000);
-        const questionArr = await newTab.$$(".ui-btn.ui-btn-normal.primary-cta.ui-btn-line-primary.ui-btn-styled",{ delay: 100 });
+        const questionArr = await newTab.$$(".challenge-submit-btn",{ delay: 100 });
         console.log(questionArr.length);
-        let questionWillSolved=await questionSolver(newTab,questionArr[0],answers[0]);
+        let questionWillSolved=await questionSolver(newTab,questionArr[1],answers[0]);
         console.log("Question is Solved");
 
         
